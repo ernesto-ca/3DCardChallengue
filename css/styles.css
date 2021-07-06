@@ -1,23 +1,38 @@
 /* IMPORTS AREA*/
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
 /* IMPORTS AREA*/
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
 :root {
-    --font-size-big: 48px;
-    --font-size-medium: 28px;
-    --font-size-small: 24px;
+    --font-size-big: 3rem;
+    --font-size-medium: 1.75rem;
+    --font-size-small: 1.5rem;
 
     --color-dark-gray: #707070;
     --font-family: 'Raleway', sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    font-size: var(--font-size-small);
     font-family: var(--font-family);
-}
+    line-height: 1.4;
+    font-weight: 400;
+    color: var(--color-black);
 
+    padding: 7.7rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 /* Dislays */
 
 .card,
@@ -35,12 +50,11 @@
 
 /* Card Start*/
 .card {
-    width: 55rem;
+    width: 58rem;
     height: 35rem;
     background-color: white;
     align-self: center;
     border: 2px solid var(--color-dark-gray);
-    z-index: 999;
     box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.2);
     flex-wrap: nowrap;
     flex-direction: row;
@@ -53,60 +67,60 @@
 }
 
 .decoration {
-    width: 21rem;
-    height: 100%;
+    width: 35%;
     overflow: hidden;
 }
 
 .decoration img {
-    width: 21rem;
+    width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: center;
     transition: transform 0.3s ease;
 }
 
 .info {
-    margin: 4rem auto;
-    width: 24rem;
+    width: 60%;
+    padding: 3.25rem 5.5rem 4rem 4.8rem;
 }
 
 h3 {
+    font-weight: bold;
     font-size: var(--font-size-big);
-    font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
 }
 
-.medium {
-    font-size: var(--font-size-medium);
-    margin-bottom: 2.5rem;
+.card p {
+    margin-bottom: 1.25rem;
 }
-
-.small {
-    font-size: var(--font-size-small);
-    margin-bottom: 4.25rem;
+.card p:not(.text-big) {
+    margin-bottom: 3.25rem;
+}
+.text-big {
+    font-size: 1.75rem;
 }
 
 .btn {
-    font-size: var(--font-size-small);
-    font-family: var(--font-family);
-    color: var(--color-dark-gray);
-    border: 0;
-    overflow: hidden;
-    background-color: white;
+    background-color: transparent;
+    padding: 0.6rem 0;
+    position: relative;
+    overflow: visible;
     cursor: pointer;
 }
 
-.btn span {
+.btn::before {
+    content: ''; /* Obligatory for before and after*/
     width: 100%;
     height: 2px;
-    display: block;
-    margin-top: 1rem;
-
     background-color: var(--color-dark-gray);
-    transition: transform 0.3s ease;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transition: width 0.3s ease;
 }
 
-.btn:hover span {
-    transform: translateX(100%);
+.btn:hover::before {
+    width: 0;
 }
 
 .card:hover .decoration img {
@@ -118,3 +132,22 @@ h3 {
     transform: rotate(0deg) translateY(-4rem);
 }
 /* Card  End*/
+
+/* Without container card
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 58rem;
+  max-width: 100%;
+  border: 2px solid var(--color-black);
+  box-shadow: 1rem 1rem 1.25rem rgba(0,0,0,0.15);
+  transform-style: preserve-3d;
+  transform: perspective(600px) rotateX(20deg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+  box-shadow: 1rem 2.5rem 1.25rem rgba(0,0,0,0.30);
+  transform: perspective(600px) rotateX(0deg) translateY(-20px);
+}
+*/
